@@ -2,17 +2,32 @@ body{
   background-color: #eaeaea;;
 }
 .App {
-  background-color: #fff;
   color: #000;
-  border: 4px solid #ddd;
   display: table;
   margin: 10% auto 0;
   width: 100%;
   max-width: 300px;
-  padding: 15px;
   text-align: left;
 }
-
+.title{
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top: 4px solid #ddd;
+  border-left: 4px solid #ddd;
+  border-right: 4px solid #ddd;
+  background-color: #204ba7;
+  color: #fff;
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+.content{
+  border-bottom: 4px solid #ddd;
+  border-left: 4px solid #ddd;
+  border-right: 4px solid #ddd;
+  padding: 15px;
+  background-color: #fff;
+}
 input{
   box-sizing: border-box;
   width: 100%;

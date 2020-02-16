@@ -45,6 +45,7 @@ class PWGenerate extends Component {
         });
     }
 
+    // submit form
     submitForm = (e) => {
         e.preventDefault();
         alert('Form submitted!');
@@ -61,16 +62,21 @@ class PWGenerate extends Component {
         let btnStatus = passwordLength && containsNumbers && isUpperCase && containsSymbols ? false : true;
         return(
             <>
-            <form>
-                <input type="text" onChange={this.handleChange('password')} value={password} placeholder="Enter Password" />
-                <div>
-                <div className={passwordLength ? 'green' : null}>Contains More than 8 characters</div>
-                <div className={containsNumbers ? 'green' : null}>Contains numbers</div>
-                <div className={isUpperCase ? 'green' : null}>Contains UpperCase</div>
-                <div className={containsSymbols ? 'green' : null}>Contains Symbols</div>
-            </div>
-            <button className="Submit" disabled={btnStatus} onClick={this.submitForm}>Submit</button>
-            </form>
+                <div className="title">
+                    Pasword Checker
+                </div>
+                <div className="content">
+                    <form>
+                        <input type="text" onChange={this.handleChange('password')} value={password} placeholder="Enter Password" />
+                        <div>
+                            <div className={passwordLength ? 'green' : null}>Contains More than 8 characters</div>
+                            <div className={containsNumbers ? 'green' : null}>Contains numbers</div>
+                            <div className={isUpperCase ? 'green' : null}>Contains UpperCase</div>
+                            <div className={containsSymbols ? 'green' : null}>Contains Symbols</div>
+                        </div>
+                        <button className="Submit" disabled={btnStatus} onClick={this.submitForm}>Submit</button>
+                    </form>
+                </div>
             </>
         );
     }
