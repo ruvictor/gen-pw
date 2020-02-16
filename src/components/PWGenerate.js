@@ -35,12 +35,19 @@ class PWGenerate extends Component {
 
     // handle password
     handleChange = input => e =>{
-        this.checkForNumbers(e.target.value);
-        this.checkForUpperCase(e.target.value);
-        this.checkForSymbols(e.target.value);
+        let targetValue = e.target.value.replace(/\s/g, '');
+        this.checkForNumbers(targetValue);
+        this.checkForUpperCase(targetValue);
+        this.checkForSymbols(targetValue);
         this.setState({
-            passwordLength: e.target.value.length > 7 ? true : false
+            [input]: targetValue,
+            passwordLength: targetValue.length > 7 ? true : false
         });
+    }
+
+    submitForm = (e) => {
+        e.preventDefault();
+        alert('Form submitted!');
     }
 
     render(){
@@ -51,7 +58,7 @@ class PWGenerate extends Component {
             isUpperCase,
             containsSymbols
         } = this.state
-        // console.log(this.state.password)
+        let btnStatus = passwordLength && containsNumbers && isUpperCase && containsSymbols ? false : true;
         return(
             <>
             <form>
@@ -62,7 +69,7 @@ class PWGenerate extends Component {
                 <div className={isUpperCase ? 'green' : null}>Contains UpperCase</div>
                 <div className={containsSymbols ? 'green' : null}>Contains Symbols</div>
             </div>
-            <button disabled={true}>Submit</button>
+            <button className="Submit" disabled={btnStatus} onClick={this.submitForm}>Submit</button>
             </form>
             </>
         );

@@ -8,9 +8,9 @@ body{
   display: table;
   margin: 10% auto 0;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   padding: 15px;
-  text-align: center;
+  text-align: left;
 }
 
 input{
@@ -25,4 +25,21 @@ input{
 .green{
   font-weight: bold;
   color: green;
+}
+
+.Submit {
+  background-color: #204ba7;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
+}
+.Submit:hover{
+  background-color: #143680;
+}
+.Submit:disabled{
+  cursor: not-allowed;
+  background-color: #6d85b9;
 }
