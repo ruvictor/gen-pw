@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class PWGenerate extends Component {
     state = {
+        password: '',
         passwordLength: false,
         containsNumbers: false,
         isUpperCase: false,
@@ -37,15 +38,14 @@ class PWGenerate extends Component {
         this.checkForNumbers(e.target.value);
         this.checkForUpperCase(e.target.value);
         this.checkForSymbols(e.target.value);
-        if(e.target.value.length > 4){
-            this.setState({
-                passwordLength: true
-            })
-        }
+        this.setState({
+            passwordLength: e.target.value.length > 7 ? true : false
+        });
     }
 
     render(){
         let {
+            password,
             passwordLength,
             containsNumbers,
             isUpperCase,
@@ -55,14 +55,14 @@ class PWGenerate extends Component {
         return(
             <>
             <form>
-                <input type="text" name="password" onChange={this.handleChange('password')} />
+                <input type="text" onChange={this.handleChange('password')} value={password} placeholder="Enter Password" />
                 <div>
-                    Contains More than 4 characters: {passwordLength ? 'OK' : null} <br />
-                    Contains numbers: {containsNumbers ? 'OK' : null}<br />
-                    Contains UpperCase: {isUpperCase ? 'OK' : null}<br />
-                    Contains Symbols: {containsSymbols ? 'OK' : null}
-                </div>
-                <button>Submit</button>
+                <div className={passwordLength ? 'green' : null}>Contains More than 8 characters</div>
+                <div className={containsNumbers ? 'green' : null}>Contains numbers</div>
+                <div className={isUpperCase ? 'green' : null}>Contains UpperCase</div>
+                <div className={containsSymbols ? 'green' : null}>Contains Symbols</div>
+            </div>
+            <button disabled={true}>Submit</button>
             </form>
             </>
         );
